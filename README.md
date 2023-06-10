@@ -2,8 +2,15 @@
 
 These 3 powershell scripts will help integrate your Loadrunner Enterprise Test execution into the wider DEVOPS process
 
-Get your Release process to update the planned.xml
+Booked.ps1 will pick the load tests from planned.xml and book these load tests. This script will first run a smoke test on all your scripts (Shakedown tests). If the scripts pass then it will update your MS Team channel, and it will book your load test
 
+Running.ps1 will update your MS Team channel soon as your load test begins to run
+
+Completed.ps1 will 1) update your MS Team channel with the smoke test results 2)  If the smoke test fails then it will delete the corresponding load test 3) it will publish the laod test results
+
+So all that is required is for these scripts to run in the background, and get your release process the planned.xml
+
+This is how to fill the planned.xml
 1) Provide a test name \<TestName>QuoteSMEAutomatonTEST\</TestName>
 2)  Provide the Load test instance ID - \<LoadTestInstanceID>548\</LoadTestInstanceID>. 
 3)  Provide the Shakedown test's Load test instance ID - \<ShakedownInstanceID>568\</ShakedownInstanceID>
