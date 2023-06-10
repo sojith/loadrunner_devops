@@ -1,5 +1,5 @@
 ﻿## Function Declarations
-$ms_team_address = "enter ms team incoming webhook link"
+$ms_team_address = "<enter ms team incoming webhook link>"
 
     #Function to send Message in Ms Team
     function Send-Message ([string]$Body){
