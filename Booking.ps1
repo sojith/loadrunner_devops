@@ -1,5 +1,5 @@
 ﻿## Function Declarations
-$ms_team_address = "https://allianzms.webhook.office.com/webhookb2/75802e45-012e-43e6-a2f5-5405b8a92ace@6e06e42d-6925-47c6-b9e7-9581c7ca302a/IncomingWebhook/454e8cd3911841ab89407006d9364ae9/fe0ba5f9-da86-48c7-b458-e576264b49e8"
+$ms_team_address = "enter ms team incoming webhook link"
 
     #Function to send Message in Ms Team
     function Send-Message ([string]$Body){
@@ -26,7 +26,7 @@ $ms_team_address = "https://allianzms.webhook.office.com/webhookb2/75802e45-012e
 
 
         try{
-            $timeslot_booking_response = Invoke-WebRequest -Method POST -ContentType "application/xml" -Uri "http://sm823172/LoadTest/rest/domains/DEFAULT/projects/$microfocus_project_name/timeslots" -WebSession $session1 -Body $xml_book_timeslot
+            $timeslot_booking_response = Invoke-WebRequest -Method POST -ContentType "application/xml" -Uri "http://pm823172/LoadTest/rest/domains/DEFAULT/projects/$microfocus_project_name/timeslots" -WebSession $session1 -Body $xml_book_timeslot
             return $timeslot_booking_response.Content
         }
         catch{
@@ -77,7 +77,7 @@ while(1){
 
     if ($first_test_index -ne "1000"){
         # 3. Login
-            $auth_response = Invoke-WebRequest -Method GET -ContentType “application/json” -Uri “http://sm823172/LoadTest/rest/authentication-point/authenticate” -Headers @{"Authorization"="Basic c29qaXRoX3M6V2VsY29tZTEyMw=="} -SessionVariable session1 
+            $auth_response = Invoke-WebRequest -Method GET -ContentType “application/json” -Uri “http://pm823172/LoadTest/rest/authentication-point/authenticate” -Headers @{"Authorization"="Basic c29qaXRoX3M6V2VsY29tZTEyMw=="} -SessionVariable session1 
     
         # 4. Book the slot for the test if it is within 5 mins of current time]
 
@@ -174,6 +174,6 @@ while(1){
    
 
         #Log out
-        $logout_response = Invoke-WebRequest -Method GET -ContentType "application/json" -Uri "http://sm823172/LoadTest/rest/authentication-point/logout" -WebSession $session1
+        $logout_response = Invoke-WebRequest -Method GET -ContentType "application/json" -Uri "http://pm823172/LoadTest/rest/authentication-point/logout" -WebSession $session1
     }
 }
