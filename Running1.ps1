@@ -1,4 +1,4 @@
-﻿$ms_team_address = "https://allianzms.webhook.office.com/webhookb2/75802e45-012e-43e6-a2f5-5405b8a92ace@6e06e42d-6925-47c6-b9e7-9581c7ca302a/IncomingWebhook/454e8cd3911841ab89407006d9364ae9/fe0ba5f9-da86-48c7-b458-e576264b49e8"
+﻿$ms_team_address = "<enter ms team incoming webhook link>"
 
     #Function to send Message in Ms Team
     function Send-Message ([string]$Body){
@@ -14,14 +14,14 @@ cls
 ## Run API to get the runs in the past 30 mins
 
 #Login
-$auth_response = Invoke-WebRequest -Method GET -ContentType “application/json” -Uri “http://sm823172/Admin/rest/authentication-point/authenticate” -Headers @{"Authorization"="Basic c29qaXRoX3M6V2VsY29tZTEyMw=="} -SessionVariable session2
+$auth_response = Invoke-WebRequest -Method GET -ContentType “application/json” -Uri “http://pm823172/Admin/rest/authentication-point/authenticate” -Headers @{"Authorization"="Basic c29qaXRoX3M6V2VsY29tZTEyMw=="} -SessionVariable session2
 
 $current_time = Get-Date
 $start_time = $current_time.ToUniversalTime().AddMinutes(-1440).ToString("yyyy-MM-dd") + "%20" + $current_time.ToUniversalTime().AddMinutes(-1440).ToString("hh:mm:ss")
 echo $start_time
 
-#$get_runs_response = Invoke-WebRequest -Method GET -ContentType “application/xml” -Uri “http://sm823172/Admin/rest/v1/runs?query={StartDate[>'2023-06-06%2010:02:00']}” -WebSession $session2
-$get_runs_response = Invoke-WebRequest -Method GET -ContentType “application/xml” -Uri “http://sm823172/Admin/rest/v1/runs?query={StartDate[>'$start_time']}” -WebSession $session2
+#$get_runs_response = Invoke-WebRequest -Method GET -ContentType “application/xml” -Uri “http://pm823172/Admin/rest/v1/runs?query={StartDate[>'2023-06-06%2010:02:00']}” -WebSession $session2
+$get_runs_response = Invoke-WebRequest -Method GET -ContentType “application/xml” -Uri “http://pm823172/Admin/rest/v1/runs?query={StartDate[>'$start_time']}” -WebSession $session2
 $get_runs = [xml]$get_runs_response.Content
 
 if ($get_runs.LabRuns.ChildNodes.Count -gt 1){
@@ -39,6 +39,6 @@ if ($get_runs.LabRuns.ChildNodes.Count -eq 1){
 
 ## Publish result in MS Team 
 
-$logout_response = Invoke-WebRequest -Method GET -ContentType "application/json" -Uri "http://sm823172/Admin/rest/authentication-point/Logout" -WebSession $session2
+$logout_response = Invoke-WebRequest -Method GET -ContentType "application/json" -Uri "http://pm823172/Admin/rest/authentication-point/Logout" -WebSession $session2
 
 
