@@ -45,12 +45,10 @@ $ms_team_address = "<enter ms team incoming webhook link>"
 
 
 while(1){
-    # 1. Read planned.xml, running.xml
+    # 1. Read planned.xml
     $planned_test_file = "X:\Automation\LRESchedule\Planned\Planned.xml"
     $planned_test_xml = [xml](Get-Content -Raw -Path $planned_test_file)
 
-    $running_test_file = "X:\Automation\LRESchedule\Running\Running.xml"
-    $running_test_xml = [xml](Get-Content -Raw -Path $running_test_file)
 
     # 2. From the list of Test Details, select the test with the earliest start time
 
@@ -136,15 +134,6 @@ while(1){
                     $planned_test_xml.TESTS.TestDetails[$first_test_index].ShakeDownStatus = "Booked"
                     $planned_test_xml.TESTS.TestDetails[$first_test_index].LoadTestStatus = "Booked"
                     $planned_test_xml.Save($planned_test_file)
-        
-                    ##Remove the entire booking from planned.xml and move it running.xml
-                    $node = $planned_test_xml.SelectSingleNode("//TESTS/TestDetails[$first_test_index+1]")
-                    $newNode = $running_test_xml.ImportNode($node, $true)
-                    $running_test_xml.DocumentElement.AppendChild($newnode)
-                    $running_test_xml.Save( $running_test_file )
-
-                    $planned_test_xml.DocumentElement.RemoveChild($node)
-                    $planned_test_xml.Save( $planned_test_file )
 
                 }
         
