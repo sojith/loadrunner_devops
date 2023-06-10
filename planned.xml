@@ -1,0 +1,22 @@
+<TESTS>
+  <TestDetails>DONOTDELETE</TestDetails>
+  <!--COPY PASTE THE "TestDetails" Node below-->
+  <!--TestDetails>
+    <TestName>QuoteSMEAutomatonTEST</TestName>
+    <LoadTestInstanceID>548</LoadTestInstanceID>
+    <ShakedownInstanceID>568</ShakedownInstanceID>
+    <ShakeDownStartTime>2023-06-02T05:41:00</ShakeDownStartTime>
+    <LoadTestStartTime></LoadTestStartTime>
+    <ShakeDownDurationInMinutes>30</ShakeDownDurationInMinutes>
+    <LoadTestDurationInMinutes>30</LoadTestDurationInMinutes>
+    <MicrofocusProjectName>JAVA</MicrofocusProjectName>
+    <LoadTestStatus>Booked</LoadTestStatus>
+    <ShakeDownStatus>Booked</ShakeDownStatus>
+    <LoadTestTimeslotID></LoadTestTimeslotID>
+    <ShakedownTimeslotID></ShakedownTimeslotID>
+    <ShakeDownEndTime></ShakeDownEndTime>
+    <LoadTestEndTime></LoadTestEndTime>
+    <LoadTestRunID></LoadTestRunID>
+    <ShakeDownRunID></ShakeDownRunID>
+  </TestDetails-->
+</TESTS>
